@@ -1,0 +1,14 @@
+from django.conf.urls import url
+from django.contrib import admin
+from log import views
+from django.contrib.auth import views as auth_views
+from django.views.generic.base import TemplateView
+
+urlpatterns = [
+    url(r'^$', TemplateView.as_view(template_name='home.html'), name='home'),
+    url(r'^log/$', auth_views.login, {'template_name': 'login.html'}, name='login'),
+    url(r'^logout/$', auth_views.logout, {'template_name': 'logged_out.html'}, name='logout'),
+	url(r'^logout/$', auth_views.logout, {'next_page': '/'}, name='logout'),
+	 url(r'^register/$', views.register, name='register'),
+   
+]
